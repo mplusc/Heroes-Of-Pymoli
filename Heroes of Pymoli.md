@@ -545,6 +545,11 @@ purchase_value = df.groupby(["SN"]).sum()["Price"]
 
 spender_data = pd.DataFrame({"Purchase Count": purchase_count, "Average Purchase Price": purchase_average, 
                                "Total Purchase Value": purchase_value})
+
+```
+
+
+```python
 spender_data.sort_values("Total Purchase Value", ascending = False).head(5)
 ```
 
@@ -610,6 +615,180 @@ spender_data.sort_values("Total Purchase Value", ascending = False).head(5)
       <td>3.86</td>
       <td>3</td>
       <td>11.58</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+item_data = df.loc[:,["Item ID","Item Name","Price"]]
+
+total_item_purchase = item_data.groupby(["Item ID","Item Name"]).sum()["Price"]
+average_item = item_data.groupby(["Item ID","Item Name"]).mean()["Price"]
+item = item_data.groupby(["Item ID","Item Name"]).count()["Price"]
+
+items = pd.DataFrame({"Purchase Count" : item,"Item Price" : average_item,"Total Purchase Value" : total_item_purchase})
+
+```
+
+
+```python
+items.sort_values("Purchase Count", ascending=False).head(5)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Item Price</th>
+      <th>Purchase Count</th>
+      <th>Total Purchase Value</th>
+    </tr>
+    <tr>
+      <th>Item ID</th>
+      <th>Item Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>39</th>
+      <th>Betrayal, Whisper of Grieving Widows</th>
+      <td>2.35</td>
+      <td>11</td>
+      <td>25.85</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <th>Arcane Gem</th>
+      <td>2.23</td>
+      <td>11</td>
+      <td>24.53</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <th>Trickster</th>
+      <td>2.07</td>
+      <td>9</td>
+      <td>18.63</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <th>Woeful Adamantite Claymore</th>
+      <td>1.24</td>
+      <td>9</td>
+      <td>11.16</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <th>Serenity</th>
+      <td>1.49</td>
+      <td>9</td>
+      <td>13.41</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+items.sort_values("Total Purchase Value", ascending=False).head(5)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Item Price</th>
+      <th>Purchase Count</th>
+      <th>Total Purchase Value</th>
+    </tr>
+    <tr>
+      <th>Item ID</th>
+      <th>Item Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>34</th>
+      <th>Retribution Axe</th>
+      <td>4.14</td>
+      <td>9</td>
+      <td>37.26</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <th>Spectral Diamond Doomblade</th>
+      <td>4.25</td>
+      <td>7</td>
+      <td>29.75</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <th>Orenmir</th>
+      <td>4.95</td>
+      <td>6</td>
+      <td>29.70</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <th>Singed Scalpel</th>
+      <td>4.87</td>
+      <td>6</td>
+      <td>29.22</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <th>Splitter, Foe Of Subtlety</th>
+      <td>3.61</td>
+      <td>8</td>
+      <td>28.88</td>
     </tr>
   </tbody>
 </table>
